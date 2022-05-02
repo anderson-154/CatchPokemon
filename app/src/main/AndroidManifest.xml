@@ -10,7 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CatchPokemon">
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.Pokedex"
+            android:exported="false" />
+        <activity
+            android:name=".activities.PokemonA"
+            android:exported="false" />
+        <activity
+            android:name=".activities.PokemonDetails"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
