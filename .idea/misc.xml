@@ -4,8 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/57318/AndroidStudioProjects/CatchPokemon/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/57318/AndroidStudioProjects/CatchPokemon/app/src/main/res/layout/activity_pokedex.xml" value="0.33" />
         <entry key="..\:/Users/57318/AndroidStudioProjects/CatchPokemon/app/src/main/res/layout/activity_pokemon.xml" value="0.18931159420289856" />
-        <entry key="..\:/Users/57318/AndroidStudioProjects/CatchPokemon/app/src/main/res/layout/view_pokemon.xml" value="0.18931159420289856" />
+        <entry key="..\:/Users/57318/AndroidStudioProjects/CatchPokemon/app/src/main/res/layout/view_pokemon.xml" value="0.25" />
       </map>
     </option>
   </component>
