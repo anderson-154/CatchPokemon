@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "923048658338",
+    "project_id": "catchpokemon-14b6a",
+    "storage_bucket": "catchpokemon-14b6a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923048658338:android:3feb45497062fa21f0defb",
+        "android_client_info": {
+          "package_name": "com.example.catchpokemon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923048658338-vb7ca0v9203tnfsdaubngkq9p3rfsbpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSZ85J5mtnA0iJaMchWxnNaW9fBB_uirM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923048658338-vb7ca0v9203tnfsdaubngkq9p3rfsbpk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
