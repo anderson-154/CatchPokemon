@@ -13,7 +13,7 @@
             android:name=".activities.Pokedex"
             android:exported="false" />
         <activity
-            android:name=".activities.PokemonA"
+            android:name=".activities.PokemonActivityCatch"
             android:exported="false" />
         <activity
             android:name=".activities.PokemonDetails"

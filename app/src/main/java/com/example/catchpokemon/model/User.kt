@@ -1,3 +1,5 @@
 package com.example.catchpokemon.model
 
-data class User(val userName:String) {}
+import java.io.Serializable
+
+data class User(val userName:String, val id:String=""):Serializable

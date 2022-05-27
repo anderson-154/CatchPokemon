@@ -7,13 +7,11 @@ import java.util.*
 data class Pokemon(
     val name:String="",
     val type:String="",
-    val imgUrl:String="",
-    val hp:Int=0,
-    val attack:Int=0,
-    val defense:Int=0,
-    val speed:Int=0,
+    val img:String="",
+    val hp:String="",
+    val attack:String="",
+    val defense:String="",
+    val speed:String="",
     val trainer:String="",
-    val id : Int=0,
-    val date: Date) : Serializable{
-
-}
+    val id : String="",
+    val date: Long=0 ) : Serializable
