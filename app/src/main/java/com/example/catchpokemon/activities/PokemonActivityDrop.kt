@@ -38,14 +38,14 @@ class PokemonActivityDrop : AppCompatActivity() {
         binding.defenseTV.text = pokemon?.defense.toString()
         binding.hpTV.text = pokemon?.hp.toString()
         binding.pType.text = pokemon?.type.toString()
-        binding.pName.text = pokemon?.name.toString()
+        binding.pName.text = pokemon?.name.toString().uppercase()
         Picasso.get().load(pokemon?.img.toString()).into(binding.imagePokemon)
         binding.dropBtn.setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO){
-                Firebase.firestore.collection("userds").document(user?.userName.toString())
+                Firebase.firestore.collection("users").document(user?.userName.toString())
                     .collection("pokemons").document(pokemon?.id.toString()).delete()
                 Firebase.firestore.collection("users").document(user?.userName.toString())
-                    .collection("pokemons").orderBy("dateCatch",Query.Direction.DESCENDING).get().addOnCompleteListener { item->
+                    .collection("pokemons").orderBy("date",Query.Direction.DESCENDING).get().addOnCompleteListener { item->
                         listener?.dropPokemon(item)
                     }
                 val intent = Intent(this@PokemonActivityDrop, Pokedex::class.java).apply {

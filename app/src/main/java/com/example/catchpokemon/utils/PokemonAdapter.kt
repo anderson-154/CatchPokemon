@@ -53,9 +53,10 @@ class PokemonAdapter: RecyclerView.Adapter<PokemonView>(), PokemonActivityDrop.O
     }
 
     override fun dropPokemon(task: Task<QuerySnapshot>) {
-        for(doc in task.result!!){
-            val pk = doc.toObject(Pokemon::class.java)
-            removePokemon(pk)
+        for(i in task.result!!){
+            val pok = i.toObject(Pokemon::class.java)
+            removePokemon(pok)
+            notifyDataSetChanged()
         }
     }
 }
