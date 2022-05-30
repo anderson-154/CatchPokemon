@@ -25,7 +25,9 @@ class PokemonActivityDrop : AppCompatActivity() {
     var pokemon: Pokemon? = null
     var user: User? = null
     var listener: OnPokemonDrop? = null
-
+    interface OnPokemonDrop{
+        fun dropPokemon(task: Task<QuerySnapshot>)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -33,12 +35,13 @@ class PokemonActivityDrop : AppCompatActivity() {
         pokemon = intent.extras?.get("pokemon") as Pokemon
         user = intent.extras?.get("user") as User
 
+
+        binding.hpTV.text = pokemon?.hp.toString()
+        binding.pType.text = pokemon?.type.toString()
+        binding.pName.text = pokemon?.name.toString()
         binding.attackTV.text = pokemon?.attack.toString()
         binding.speedTV.text = pokemon?.speed.toString()
         binding.defenseTV.text = pokemon?.defense.toString()
-        binding.hpTV.text = pokemon?.hp.toString()
-        binding.pType.text = pokemon?.type.toString()
-        binding.pName.text = pokemon?.name.toString().uppercase()
         Picasso.get().load(pokemon?.img.toString()).into(binding.imagePokemon)
         binding.dropBtn.setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO){
@@ -57,7 +60,4 @@ class PokemonActivityDrop : AppCompatActivity() {
         }
     }
 
-    interface OnPokemonDrop{
-        fun dropPokemon(task: Task<QuerySnapshot>)
-    }
 }

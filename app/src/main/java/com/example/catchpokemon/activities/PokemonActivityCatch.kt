@@ -27,12 +27,12 @@ class PokemonActivityCatch : AppCompatActivity() {
         user = intent.extras?.get("user") as User
         pokemon = intent.extras?.get("pokemon") as Pokemon
 
-        binding.attackTV.text = pokemon.attack
-        binding.defenseTV.text = pokemon.defense
         binding.pName.text = pokemon.name
         binding.pType.text = "(${pokemon.type})"
         binding.speedTV.text = pokemon.speed
         binding.hpTV.text = pokemon.hp
+        binding.attackTV.text = pokemon.attack
+        binding.defenseTV.text = pokemon.defense
         Picasso.get().load(pokemon.img).into(binding.imagePokemon)
 
         binding.pCatchBtn.setOnClickListener {
@@ -43,6 +43,5 @@ class PokemonActivityCatch : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
     }
 }

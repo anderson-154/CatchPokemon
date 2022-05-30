@@ -9,8 +9,8 @@
         android:id="@+id/imageRow"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginEnd="300dp"
-        app:layout_constraintEnd_toEndOf="@+id/backBtn"
+        android:layout_marginStart="41dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -18,8 +18,8 @@
         android:id="@+id/nameRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="125dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="128dp"
         android:layout_marginBottom="6dp"
         android:text="Name"
         android:textSize="24sp"
@@ -32,7 +32,7 @@
         android:id="@+id/dateRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="3dp"
         android:text="Date"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/nameRow"
@@ -43,11 +43,14 @@
         android:id="@+id/backBtn"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#00FFFFFF"
         android:backgroundTint="#00FFFFFF"
         app:iconTint="#00FF5722"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:text="Back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

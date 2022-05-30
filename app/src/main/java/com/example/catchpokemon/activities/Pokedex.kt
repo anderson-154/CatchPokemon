@@ -62,16 +62,16 @@ class Pokedex : AppCompatActivity() {
         }
 
         binding.catchBtn.setOnClickListener {
-            if(binding.pokemonPT.text.isBlank()){
-                Toast.makeText(this, "Empty field or non existent pokemon", Toast.LENGTH_SHORT).show()
+            if(binding.searchPT.text.isBlank()){
+                Toast.makeText(this, "Campo vacio", Toast.LENGTH_SHORT).show()
             }else{
                 requestPokemon(binding.searchPT.text.toString(), false)
             }
         }
 
         binding.watchBtn.setOnClickListener {
-            if(binding.pokemonPT.text.isBlank()){
-                Toast.makeText(this, "Empty field or non existent pokemon", Toast.LENGTH_SHORT).show()
+            if(binding.searchPT.text.isBlank()){
+                Toast.makeText(this, "Campo vacio", Toast.LENGTH_SHORT).show()
             }else{
                 requestPokemon(binding.searchPT.text.toString(), true)
             }
@@ -84,16 +84,17 @@ class Pokedex : AppCompatActivity() {
             val requestClient = url.openConnection() as HttpURLConnection
             requestClient.requestMethod = "GET"
             try{
+
                 val json = requestClient.inputStream.bufferedReader().readText()
                 val jsonObject = JSONObject(json)
-                val name = jsonObject.optJSONObject("species")?.optString("name")
-                val type = jsonObject.optJSONArray("types")?.getJSONObject(0)?.optJSONObject("type")?.optString("name")
-                val img = jsonObject.optJSONObject("sprites")?.optString("front_default")
                 val stat = jsonObject.optJSONArray("stats")
                 val life = stat?.getJSONObject(0)?.optInt("base_stat")
                 val attack = stat?.getJSONObject(1)?.optInt("base_stat")
                 val defense = stat?.getJSONObject(2)?.optInt("base_stat")
                 val speed = stat?.getJSONObject(5)?.optInt("base_stat")
+                val name = jsonObject.optJSONObject("species")?.optString("name")
+                val type = jsonObject.optJSONArray("types")?.getJSONObject(0)?.optJSONObject("type")?.optString("name")
+                val img = jsonObject.optJSONObject("sprites")?.optString("front_default")
 
                 pokemon = Pokemon(name!!, type!!,img!!,"${life!!}","${attack!!}","${defense!!}","${speed!!}",user.userName,UUID.randomUUID().toString(),Date().time)
                 if(show) showPokemon() else catchPokemon()
@@ -107,7 +108,7 @@ class Pokedex : AppCompatActivity() {
 
     private fun searchPokemon(pokemonName: String){
         lifecycleScope.launch(Dispatchers.IO){
-            val query = Firebase.firestore.collection("users").document(user.userName).collection("pokemones").whereEqualTo("name",pokemonName)
+            val query = Firebase.firestore.collection("users").document(user.userName).collection("pokemons").whereEqualTo("name",pokemonName)
             query.get().addOnCompleteListener { item->
                 if (item.result?.size()!=0){
                     lateinit var pokemonSearch : Pokemon
@@ -118,7 +119,7 @@ class Pokedex : AppCompatActivity() {
                         adapter.notifyDataSetChanged()
                         break
                     }
-                }else Toast.makeText(this@Pokedex,"Empty field or pokemon not catched",Toast.LENGTH_LONG).show()
+                }else Toast.makeText(this@Pokedex,"Error con algun campo solicitado",Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -128,8 +129,7 @@ class Pokedex : AppCompatActivity() {
             Firebase.firestore.collection("users").document(user.userName).collection("pokemons")
                 .document(pokemon.id).set(pokemon)
             Firebase.firestore.collection("users").document(user.userName).collection("pokemons")
-                .orderBy("date", Query.Direction.DESCENDING)
-                .get().addOnCompleteListener { item->
+                .orderBy("date", Query.Direction.DESCENDING).get().addOnCompleteListener { item->
                     adapter.deletePokemon()
                     for (i in item.result!!){
                         val pok = i.toObject(Pokemon::class.java)
